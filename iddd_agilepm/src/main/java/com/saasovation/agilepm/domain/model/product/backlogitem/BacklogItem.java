@@ -168,6 +168,10 @@ public class BacklogItem extends Entity {
                     this.type()));
     }
 
+    /**
+     * 使用了领域对象的行为，这种行为表达出了领域中的通用语言
+     * @param aSprint
+     */
     public void commitTo(Sprint aSprint) {
         this.assertArgumentNotNull(aSprint, "Sprint must not be null.");
         this.assertArgumentEquals(aSprint.tenantId(), this.tenantId(), "Sprint must be of same tenant.");
@@ -634,6 +638,7 @@ public class BacklogItem extends Entity {
         this.releaseId = aReleaseId;
     }
 
+
     private void setSprintId(SprintId aSprintId) {
         this.sprintId = aSprintId;
     }
@@ -679,6 +684,10 @@ public class BacklogItem extends Entity {
         this.tasks = aTasks;
     }
 
+    /**
+     * 私有的set方法，防止对象被变更，而是通过更有语意的领域方法去操作
+     * @param aTenantId
+     */
     private void setTenantId(TenantId aTenantId) {
         this.assertArgumentNotNull(aTenantId, "The tenant id must be provided.");
 
